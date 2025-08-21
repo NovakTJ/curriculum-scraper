@@ -1,0 +1,5 @@
+## Tekst zadatka:
+
+## Resenje:
+
+## OOP koncepti i C++ koncepti koji su potrebni za ovaj zadatak:
