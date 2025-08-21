@@ -1,0 +1,40 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Direktna inizijalizacija listom (direct-list-initialization) inicijalizuje varijablu listom izraza 
+unutar velikih zagrada u sledećim situacijama:
+• Kada se imenovana varijabla inicijalizuje listom bez znaka =:
+T t {expression, expression, …} 
+• Kada se privremeni objekat inicijalizuje listom:
+T {expression, expression, …} 
+• Kada se dinamički objekat inicijalizuje u izrazu new listom:
+new T {expression, expression, …} 
+• Kada se nestatički podatak član inicijalizuje listom bez znaka =:
+class X { T t {expression, expression, …}; }; 
+• Kada se podobjekat osnovne klase ili podobjekat član inicijalizuje listom, unutar 
+liste inicijalizatora u konstruktoru klase:
+C::C (…),  B {expression, …}, m {espression,…} {…} 
+Inicijalizacija listom
+ 425
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Inizijalizacija varijable tipa T listom radi sledeće (nabrojana su samo neka pravila, i to okvirno):
+• Ako je T agregatni tip, a lista sadrži samo jedan element istog ili tipa izvedenog iz T (bez cv-kvaliﬁkacija), 
+objekat se inicijalizuje tim elementom (inicijalizacijom kopiranjem ili direktnom inicijalizacijom, kako je 
+objašnjeno)
+• Inače, ako je T niz znakova, a lista sadrži samo jedan element koji je string literal odgovarajućeg tipa, niz 
+znakova se inicijalizuje string literalom kao što je uobičajeno
+• Ako je T agregatni tip, primenjuje se agregatna inicijalizacija
+• Inače, ako je lista prazna, a T klasa sa podrazumevanim konstruktorom, primenjuje se inicijalizacija 
+vrednošću
+• Inače, ako je T specijalizacija tipa std::initializer_list, objekat se inicijalizuje (direktno ili kopiranjem) iz 
+čdvrednosti istog tipa koja se odnosi na datu listu
+• Inače, traži se konstruktor klase T koji može da se pozove sa jednim argumentom tipa std::initializer_list i 
+on se poziva sa datom listom
+• Inače, ako T nije klasa, a lista ima samo jedan element, i T je ili referenca kompatibilna sa tipom elementa 
+ili nije refenca, inicijalizuje se direktno ili kopiranjem tog elementa
+• Inače, ako je T referenca, vezuje se za privremeni objekat tipa na koji upućuje referenca, koji se inicijalizuje 
+listom
+• Inače, ako lista nema elemente, vrši se inicijalizacija vrednošću
+Inicijalizacija listom
+ 426

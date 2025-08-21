@@ -1,0 +1,43 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Neki osnovni pojmovi jezika
+❖ Sledeće stvari nisu objekti:
+• vrednost: rezultat izraza (operacije nad operandom), osim kada se zahteva pravljenje privremenog objekta
+• referenca
+• funkcija
+• enumerator: član enumeracije (simbolička konstanta)
+• tip
+• nestatički član klase
+• šablon
+• this
+• i još neke stvari
+❖ Varijabla (variable) je objekat ili referenca koji nije nestatički podatak član i koji je uveden deklaracijom
+❖ Objekti se prave:
+• deﬁnicijama: posebne vrste deklaracija koje imaju efekat pravljenja objekta
+• operatorom new
+• operatorom throw
+• kada se zahteva pravljenje privremenog objekta
+❖ Deklaracija (declaration) je iskaz koji uvodi identiﬁkator u program: svaki identiﬁkator mora se deklarisati pre 
+upotrebe
+ 163
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Prevođenje
+❖ Program na jeziku C++ sastoji se od jednog ili više modula, pri čemu se modulom smatra 
+sadržaj jednog fajla za izvornim kodom (tipična ekstenzija imena je .cpp)
+❖ Svaki izvorni fajl je odvojena jedinica prevođenja (compilation unit): svaki fajl se prevodi 
+odvojeno i nezavisno: kada prevodilac (compiler) prevodi jedan fajl, ne izlazi iz granica tog 
+fajla, odnosno ne tretira druge fajlove programa
+❖ Kada prevodi jedan fajl sa izvornim kodom (.cpp), prevodilac će generisati jedan fajl sa 
+prevedenim kodom, fajl sa tzv. objektnim kodom (object ﬁle, tipična ekstenzija .obj ili .o; termin 
+nema veze sa objektno orijentisanim programiranjem)
+❖ Bilo koja greška u prevođenju uzrokuje da prevodilac ne proizvede izlazni obj fajl; bez 
+obzira na to, prevodilac po pravilu nastavlja prevođenje, pokušavajući da prevaziđe svaku 
+grešku i prijavljuje sve eventualne druge greške na koje naiđe
+❖ Fajl sa izvornim kodom sastoji se isključivo od deklaracija: tipova (uključujuči i klase), 
+funkcija, objekata i drugog. Deklaracija (declaration) je iskaz koji uvodi identiﬁkator u 
+program
+❖ Svako ime (identiﬁkator) koje se koristi u programu mora najpre biti deklarisano, u 
+suprotnom će prevodilac prijaviti grešku u prevođenju
+ 164

@@ -1,0 +1,73 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Povezivanje
+❖ Zadatak da od skupa objektnih fajlova napravi program, tj. izvršiv fajl, ima povezivač, tj. linker (linker); linkeru se 
+zadaje spisak ulaznih obj fajlova i zadatak da napravi određeni exe fajl kao svoj izlaz
+❖ Linker taj zadatak obavlja u dva prolaza:
+• u prvom prolazu analizira ulazne fajlove, veličinu njihovog binarnog sadržaja (prevoda), i pravi mapu exe 
+fajla; osim toga, sakuplja infomacije iz tabela simbola obj fajlova i izgrađuje svoju tabelu simbola; u tu tabelu 
+simbola unosi izvezene simbole iz obj fajlova, za koje odmah može da izračuna adresu u odnosu na ceo exe fajl
+• u drugom prolazu generiše binarni kod, i ujedno razrešava nerazrešena adresna polja mašinskih instrukcija na 
+osnovu informacija o adresama u koje se preslikavaju simbola 
+iz svoje tabele simbola  
+ 171
+symbols 
+  ↑g: code:0 
+  ↓a: … 
+  ↓f: … 
+end symbols 
+seg code 
+g: ld r1,? 
+   inc r1 
+   st r1,? 
+   call ? 
+   ret 
+end seg 
+A.obj
+symbols 
+  ↑n: data:0 
+  ↑f: code:0 
+end symbols 
+seg data 
+n: ff ff ff f0 
+end seg 
+ 
+seg code 
+f: … 
+end seg 
+… 
+B.obj C.obj P .exe
+seg data 
+n: ff ff ff f0 
+end seg 
+ 
+seg code 
+f: … 
+end seg 
+seg code 
+g: ld r1,n 
+   inc r1 
+   st r1,n 
+   call f 
+   ret 
+end seg 
+… 
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Povezivanje
+❖ Biblioteka (library) je fajl sa tipičnom ekstenzijom .lib, koja ima principijelno 
+isti format kao i objektni fajl; kada povezuje fajlove, linker tretira ulazne lib i 
+obj fajlove na isti način (zadaje mu se spisak ulaznih obj i lib fajlove koje treba 
+povezati)
+❖ Razlika je u tome što je obj fajl nastao prevođenjem jednog izvornog fajla, dok 
+je lib nastao povezivanjem više obj (i moguće drugih lib) fajlova u jedan lib fajl
+❖ Motiv je praktičan: kod za neku biblioteku (potprograma, struktura, tipova) 
+za određenu namenu može da ima mnogo (na stotine) izvornih fajlova; 
+nepraktično bi bilo koristiti to mnoštvo fajlova i sve pojedinačno ih davati na 
+povezivanje u programe koji ih koriste; “pakovanjem” u biblioteku koja se 
+isporučuje i povezuje kao jedan lib fajl olakšava se rukovanje
+❖ Biblioteka svakako izvozi simbole koje deﬁniše (upravo one koji predstavljaju 
+njene usluge, ono za šta se ona i koristi), ali može i da ih uvozi, ukoliko zavisi 
+od neke druge biblioteke (koristi simbole iz druge biblioteke)
+ 172

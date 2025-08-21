@@ -1,0 +1,42 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Polimorfizam
+❖ Drugi delovi programa koji objektima pristupaju generalizovano, kao (direktnim 
+ili indirektnim) instancama osnovne klase Clock, ne moraju da se menjaju:
+void Lobby::tick () { 
+  for (int i=0; i<num; i++) 
+    clocks[i]->tick(); 
+} 
+void Lobby::print () { 
+  for (int i=0; i<num; i++) 
+    cout<< cities[i] << ": "  
+        << clocks[i]->getTime() << endl; 
+} 
+❖ Bez obzira na to što se objektu obraća kao instanci osnovne klase (pokazivač je 
+tipa Clock*), odaziva se ona implementacija operacije koja odgovara klasi čija je 
+objekat direktna instanca; svaki objekat reaguje na način svojstven svojoj klasi
+❖ Ovaj mehanizam naziva se polimorﬁzam (polymorphism, poly - više, μορφή - oblik, 
+pojavljivanje u više oblika)
+ 36
+Polimorﬁzam: pokazivač clocks[i] je tipa Clock*
+clocks
+Clock Clock 
+With 
+Date
+Clock
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Uvod u jezik C++
+❖ C++ je standardan, objektno orijentisan programski jezik opšte namene
+❖ C++ je vertikalno kompatibilan (uz manje izuzetke) sa jezikom C: svi C 
+programi se mogu prevoditi prevodiocem za C++
+❖ Međutim, C++ je jezik nove generacije i različite paradigme nego što je C! 
+Razlika između jezika C i C++ je veća (konceptualna i paradigmatska) nego što 
+je između jezika C++ i drugih OO jezika, npr. jezika Java
+❖ C++ podržava sve osnovne OO koncepte, ali dozvoljava i neobjektne delove 
+programa ili cele programe
+❖ Kao i svaki jezik, C++ je alat koji pomaže u pisanju objektnih programa i 
+izražavaznju objektnih koncepata, ali ne sprečava pravljenje loših programa
+❖ C++ je sredstvo za izražavanje objektne koncepcije programa
+ 37

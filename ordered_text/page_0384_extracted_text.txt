@@ -1,0 +1,45 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Ostaje još i da se deﬁniše konstruktor premeštanja, koji može da bude pozivan za 
+argumente koji su dvrednosti. On vrši jednostavnu zamenu operacijom swap, pri čemu je 
+najpre svoj pokazivač str postavio na vrednost null podrazumevanom konstrukcijom:
+inline string::string (string&& other) : string() { 
+  swap(*this,other); 
+} 
+❖ Privremeni objekat kojim se inicijalizuje objekat za koji se konstruktor izvršava neće imati 
+ništa da uništava, jer će u njegov pokazivač str ovom zamenom biti upisana null vrednost
+❖ Kako sve operacije swap takve da ne bacaju izuzetke (non-throwing, noexcept), ovakva 
+implementacija obezbediće jaku garanciju od izuzetaka; osim toga, one su veoma 
+eﬁkasne, jer vrše prostu i brzu razmenu vrednosti
+Premeštanje resursa
+ 384
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Vratimo se na implementaciju funkcije substr:
+inline string string::substr (size_t pos, size_t count) const { 
+  size_t sz = size(); 
+  if (pos>=sz) throw std::out_of_range; 
+  if (pos+count>sz) count = sz - pos; 
+  string s; 
+  s.allocate(count); 
+  s.copy(str+pos,count); 
+  return s; 
+} 
+❖ Ukoliko se ova funkcija pozove za privremeni objekat kao objekat domaćin (*this), bespotrebno će alocirati prostor za 
+vraćeni objekat tipa string, ako već alocirani niz znakova u tom objektu ubrzo nestaje; umesto toga, za traženi podniz može 
+se iskoristiti isti taj prostor koji se može preoteti od privremenog objekta domaćina
+❖ Kako se radi o nestatičkoj funkciji članici, potrebno je razlikovati funkcije koje će biti pozvane u slučajevima da je objekat 
+domaćin privremeni objekat ili nije, odnosno da je dvrednost ili lvrednost; to se može uraditi navođenjem znakova & (za 
+lvrednost) ili && (za dvrednost) u deklaraciji nestatičke funkcije članice:
+class string { 
+  … 
+  string substr (size_t pos, size_t count) const &; 
+  string substr (size_t pos, size_t count) &&; 
+  … 
+}; 
+string s1 = "Hello world!"; 
+string s2 = s1.substr(0,5); 
+string s3 = string("Hello world!”).substr(0,5) + (s1+s2).substr(0,5);
+Premeštanje resursa
+ 385

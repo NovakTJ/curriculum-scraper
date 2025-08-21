@@ -1,0 +1,39 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Skup preklopljenih operatora treba da bude “zatvoren”, u smislu da su preklopljeni svi 
+operatori koji se očekuju zajedno; to nikako ne znači da za klasu treba preklapati sve 
+moguće operatore, već samo da skup operatora treba kompletirati na one očekivane; na 
+primer:
+• ako je preklopljen operator ==, treba preklopiti i operator !=, i to baš tako da vraća 
+negaciju operatora == za iste operande, ali ne obavezno i operatore < i > (jer za 
+klasu možda nema smisla takva relacija uređenja) 
+• ako je za klasu preklopljen operator == i <, treba preklopiti i operatore !=, >, <= i >=; 
+od verzije jezika C++20, u jeziku postoji operator opšteg poređenja <=> koji vraća 
+vrednost manju od 0 ako je prvi operand manji od drugog, veću od 0 ako je prvi veći 
+od drugog, a nulu ako su operandi jednaki; dovoljno je preklopiti samo ovaj 
+operator i svi drugi vezani operatori poređenja na jednakost i nejednakost biće 
+implicitno deﬁnisani na odgovarajući način
+• ako je za klasu preklopljen operator + i postoji operator =, treba preklopiti i operator 
++= i to sa očekivanim spregnutim značenjem, jer će se i on očekivati,
+i tako dalje
+Preporučeni načini preklapanja operatora
+ 443
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Veze koje postoje za ugrađene operatore treba da budu takve i za preklopljene 
+operatore; na primer, za ugrađene operatore +, = i += važi odgovarajuća sprega, koja 
+treba da važi i za preklopljene operatore (da a+=b ima efekat kao a=a+b)
+❖ Preklopljeni operatori treba da vraćaju očekivani tip, po uzoru na ugrađene operatore, i 
+istu kategoriju vrednosti: na primer, ugrađeni operatori dodele i složene dodele vraćaju 
+lvrednost koja upućuje na levi operand, pa to isto treba raditi i za preklopljene 
+operatore, kako bi moglo da se radi i npr. sledeće:
+(a = b) = c; 
+(a = b) ++; 
+❖ Za preklopljene operatore dodele = kopiranjem i premeštanjem preporučuje se sledeće:
+• da vraćaju referencu na svoj levi operand (kao nekonstantu)
+• da ne rade ništa u slučaju samododeljivanja (x=x)
+• da operator dodele premeštanjem ostavi desni operand (argument) u konzistentnom 
+stanju, barem tako da se može propisno uništiti i da ne baca izuzetke (noexcept)
+Preporučeni načini preklapanja operatora
+ 444

@@ -1,0 +1,44 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Svaki objekat u programu ima određenu kategoriju trajanja skladišta (storage duration): vreme u toku 
+izvršavanja programa za koje je prostor u memoriji za taj objekat alociran (smatra se zauzetim za 
+potrebe smeštanja tog objekta); te kategorije su:
+• statičko trajanje (static storage duration): prostor za objekat se alocira na početku izvršavanja programa 
+i dealocira na kraju izvršavanja programa; po pravilima jezika, za svaku deﬁniciju ovakvog objekta 
+postoji jedna instanca za vreme izvršavanja; zato prevodilac može (i po pravilu to i radi) alocirati taj 
+prostor u prevedenom fajlu koji predstavlja memorijsku mapu programa prilikom pokretanja
+• automatsko trajanje (automatic storage duration): prostor za objekat alocira se na ulasku u blok i 
+dealocira pri izlasku iz tog bloka; za svaku ativaciju bloka i svaku deﬁniciju automatskog objekta 
+postoji posebna instanca objekta, pa se ovaj prostor alocira na kontrolnom steku programa, dok se 
+objekti adresiraju relativno u odnosu na vrh steka, kako bi se pristupilo aktuelnoj instanci objekta na 
+koji se deﬁnicija odnosi (npr. pri rekurzijama)
+• dinamičko trajanje (dynamic storage duration): prostor za objekat se alocira i dealocira na eksplicitan 
+zahtev, pozivom odgovarajućih funkcija koje alociraju i dealociraju prostor dinamički, sledom 
+izvršavanja programa
+• trajanje vezano za nit (thread): prostor za objekat se alocira kada počinje izvršavanje niti, a dealocira 
+kada se izvršavanje završi; svaka nit ima svoju instancu ovakvog objekta
+Trajanje skladišta i životni vek
+ 315
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Svaka varijabla (objekat ili referenca) u programu ima svoj životni vek (lifetime): vreme tokom izvršavanja 
+programa za koje ta varijabla živi i za koje joj se može pristupati:
+• životni vek objekata klasnog tipa i agregata takvih objekata, kao i njihovih podobjekata, počinje nakon 
+što se završi njihova inicijalizacija (poziv konstruktora), osim ako se inicijalizuju tzv. trivijalnim 
+konstruktorom (implicitni konstruktor koji nema baš nikakve efekte za vreme izvršavanja)
+• životni vek objekata klasnog tipa završava se kada započne izvršavanje destruktora (osim ako je 
+destruktor trivijalan - nema baš nikakve efekte)
+• za sve druge objekte (objekte neklasnih tipova, objekte sa trivijalnim konstruktorima i destruktorima, 
+nizovi takvih objekata), životni vek počinje kada se za njih alocira prostor, a završava kada se prostor 
+dealocira
+• životni vek reference počinje kada se završi njena inicijalizacija, a traje kao da je ona skalarni objekat
+❖ Prema tome, iz ovoga sledi:
+• životni vek objekta je isti ili je ugnežđen u vreme trajanja njegovog skladišta (memorijskog prostora)
+• pre početka životnog veka objekta klasnog tipa uvek se (bez ikakvog izuzetka) poziva njegov 
+konstruktor, a nakon završetka životnog veka uvek (bez ikakvog izuzetka) njegov destruktor
+• životni vek referenciranog objekta (na koga ukazuje pokazivač ili upućuje referenca) može biti kraći 
+od životnog veka tog pokazivača ili reference - problem visećih pokazivača/referenci (dangling 
+reference)
+Trajanje skladišta i životni vek
+ 316

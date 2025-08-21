@@ -1,0 +1,46 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Vratimo se na implementaciju operatora dodele kopiranjem:
+inline string& string::operator= (const string& s) { 
+  if (this != &s) { 
+    release(); 
+    allocate(s.str); 
+    copy(s.str); 
+  } 
+  return *this; 
+} 
+❖ Ova implementacija ima sledeća dva nedostatka:
+• provera na “samododeljivanje” (self assignment) u naredbi if izvršava se uvek i 
+troši režijsko vreme u svakom pozivu, iako se verovatno nikada u programu 
+neće dogoditi problematična situacija samododeljivanja (jer nema smisla)
+• ova implementacija pruža samo osnovni (slabi) nivo garancije od izuzetaka: ako 
+alokacija prostora u funkciji allocate ne uspe i baci izuzetak, objekat domaćin (na 
+koga ukazuje this) već je izmenjen u operaciji release; bilo bi bolje da se obezbedi 
+jaka garancija
+Premeštanje resursa
+ 381
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Oba problema se mogu prevazići idiomom kopiranja i zamene (copy-and-swap idiom):
+• ako je desni operand operatora dodele lvrednost, najpre se konstruktorom kopije pravi lokalni automatski 
+objekat - parametar operatorske funkcije, koji kopira resurs argumenta u formalni parametar
+• potom se radi prosta i eﬁkasna razmena (swap) resursa između parametra i objekta domaćina (onog na koga 
+ukazuje this); ta zamena radi se pomoćnom operacijom swap koja ne baca izuzetak (non-throwing)
+• kada se izlazi iz ove operatorske funkcije, parametar, kao lokalni automatski objekat biće uništen pozivom 
+destruktora, koji će obrisati prethodni resurs koji je objekat domaćin imao u sebi:
+inline string& string::operator= (string other) { 
+  swap(*this,other); 
+  return *this; 
+} 
+❖ Sada će se dešavati sledeće:
+• ako je desni operand operatora dodele dvrednost, npr. privremeni objekat, formalni parametar operatorske 
+funkcije biće inicijalizovan njime i to ili direktnom konstrukcijom, zbog izostavljanja kopiranja (svakako za C+
++17), ili konstruktorom premeštanja ako ove optimizacije nema:
+s = string("Hello"); 
+• ako je desni operand operatora dodele lvrednost, formalni parametar operatorske funkcije biće inicijalizovan 
+pozivom konstruktora kopije; ako se pri alokaciji njegovog resursa baci izuzetak, to će biti urađeno pre ulaska u 
+operatorsku funkciju, pa objekat domaćin (levi operand operatora dodele) neće biti promenjen:
+s1 = s2;
+Premeštanje resursa
+ 382

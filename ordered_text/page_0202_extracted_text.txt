@@ -1,0 +1,36 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Fundamentalni celobrojni tipovi
+❖ Tip celobrojnog literala je prvi tip koji može da prihvati datu vrednost, počev od tipa 
+int, ili od tipa long ako je dat suﬁks l ili L, odnosno od tipa long long ako je dat suﬁks ll ili 
+LL, i neoznačen ako je dat suﬁks u ili U
+❖ Na primer: 
+int d = 42; 
+int o = 052; 
+int x = 0x2a; 
+int X = 0X2A; 
+int b = 0b101010; 
+unsigned long long l1 = 18446744073709550592ull; 
+unsigned long long l2 = 18'446'744'073'709'550'592LLU;
+ 202
+Svi imaju istu vrednost
+Oba imaju istu vrednost
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Fundamentalni celobrojni tipovi
+❖ Aritmetički operatori primaju operande najmanje tipa int; ukoliko je neki operand 
+manjeg tipa, implicitno se konvertuje u tip int; ako je jedan operand binarnog 
+operatora većeg tipa od drugog, onaj manji se implicitno konvertuje u tip većeg. Ove 
+konverzije čuvaju vrednost. Ovo se naziva integralna promocija (integral promotion):
+• signed char ili signed short može da se konvertuje u int
+• unsigned char ili unsigned short može se konvertovati u int ako ovaj može da 
+prihvati ceo opseg vrednosti, odnosno u unsigned int u suprotnom
+• char se može konvertovati u int ili unsigned int u zavisnosti od njegove 
+interpretacije (signed char ili unsigned char)
+• wchar_t, char16_t i char32_t mogu da se konvertuju u prvi od sledećih tipova koji 
+može da prihvati ceo opseg vrednosti: int, unsigned int, long, unsigned long, long 
+long, unsigned long long
+• tip bool može da se konvertuje u tip int, pri čemu vrednosti false postaje 0, a 
+vrednost true postaje 1
+ 203

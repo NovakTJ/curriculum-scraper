@@ -1,0 +1,40 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Jezici C i C++ su veoma bogati operatorima. Zapravo je najveći deo obrade u tipičnom 
+C/C++ programu deﬁnisan izrazima
+❖ Bočni efekat (side effect) se naziva pojava da funkcija/operacija, za koju se izračunavanje 
+rezultata (povratne vrednosti) smatra primarnim efektom, izvrši neku promenu u svom 
+okruženju, npr. promenu svojih argumenata/operanada. U klasičnoj teoriji 
+programiranja, bočni efekti se smatraju lošom praksom, jer smanjuju razumljivost 
+programa: funkcija/operacija ima efekte koje čitalac ne očekuje i ne vidi direktno, jer je 
+fokusiran na njen rezultat
+❖ Potpuno suprotno ovom uverenju, mnogi operatori na jezicima C i C++ imaju bočne 
+efekte, tj. menaju neki od svojih operanada. Zapravo je za većinu njih taj bočni efekat 
+upravo njihova primarna uloga!
+❖ Ovo je posledica izvorne orijentacije jezika C prema konciznim i eﬁkasnim izrazima u 
+kojima programer sugeriše optimizacije prevodiocu: raniji prevodioci nisu bili toliko 
+napredni i prevođenje u optimizovani kod je bilo jednostavnije ukoliko sam izraz 
+deﬁniše način korišćenja neke vrednosti koja je pročitana ili proizvedena kao rezultat u 
+jednoj operaciji kao operand neke naredne
+Operatori
+ 286
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Na primer, operatori inkrementiranja ++ i dekrementiranja -- imaju bočne efekte i imaju 
+dva oblika:
+• preﬁksni: ++operand inkrementira operand, a kao rezultat vraća njegovu novu 
+vrednosti
+• postﬁksni: operand++ inkrementira operand, a kao rezultat vraća njegovu staru 
+vrednosti (pre inkrementiranja)
+Slično važi i za dekrementiranje. Na primer:
+a = i++; 
+b = --k; 
+❖ Dodela vrednosti je takođe operator: osim što dodeljuje vrednost (bočni efekat, zapravo 
+primarna uloga), on vraća vrednost; pritom, grupiše zdesna nalevo:
+x = y = f()+z 
+❖ Postoje operatori složene dodele: a+=b znači isto što i a = a+b, osim što se operand (ako 
+je podizraz) a izračunava samo jednom; na primer:
+*p++ += 3
+Operatori
+ 287

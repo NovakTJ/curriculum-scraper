@@ -1,0 +1,46 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Operatori ++ i -- imaju preﬁksni i postﬁksni oblik koji se mogu razlikovati tako što se 
+preklopljeni postﬁksni operatori deﬁnišu sa parametrom koji prihvata drugi operand 
+tipa int; pri pozivu preklopljene operatorske funkcije, ovaj argument ima vrednost 0:
+complex& complex::operator++ () {…} 
+complex complex::operator++ (int) {…} 
+complex c(3.,4.); 
+c++; 
+++c; 
+❖ Preklopljeni operator -> mora biti nestatička funkcija članica koja nema parametre i 
+koja mora da vrati ili običan pokazivač, ili (referencu na) objekat za koji je takođe 
+preklopljen operator ->:
+template<typename T> 
+T* smart_ptr<T>::operator-> () {…} 
+smart_ptr<Clock> p = &clk; 
+p->tick();
+Preklopljeni operatori
+ 439
+Preﬁksni operator, vraća lvrednost
+Tumači se kao c.operator++(0)
+Postﬁksni operator, vraća čdvrednost
+Tumači se kao c.operator++()
+Tumači se kao (p.operator->())->tick();
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Preklopljeni operatori
+Izraz Kao članica Kao nečlanica Primer
+@a (a).operator@() operator@(a) !std::cin poziva 
+std::cin.operator!()
+a@b (a).operator@(b) operator@(a,b) std::cout << 42 poziva 
+std::cout.operator<<(42)
+a = b (a).operator=(b) Ne može std::string s; s = "abc"; poziva 
+s.operator=("abc")
+a(b…) (a).operator()
+(b…) Ne može
+std::random_device r; auto n = 
+r(); poziva r.operator()() 
+a[b] (a).operator[]
+(b) Ne može std::map<int,int> m; m[1] = 2; 
+poziva m.operator[](1)
+a-> (a).operator->() Ne može auto p = std::make_unique<S>(); 
+p->bar() poziva p.operator->()
+a@ (a).operator@(0) operator@(a,0) std::vector<int>::iterator i =…; 
+i++ poziva i.operator++(0)

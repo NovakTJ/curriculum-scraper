@@ -1,0 +1,31 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Fundamentalni celobrojni tipovi
+❖ Celobrojni literali:
+• niz cifara koji ne počinje cifrom 0: decimalni zapis
+• niz cifara od 0 do 7 koji počinje cifrom 0: oktalni zapis
+• niz cifara i slova od a do f ili od A do H ispred koga su znaci 0x ili 0X: 
+heksadecimalni zapis
+• niz cifara 0 ili 1 ispred koga su znaci 0b ili 0B: binarni zapis
+❖ Literal može imati jedan od sledećih suﬁksa ili oba, koji utiču na njegov tip:
+• znak u ili U: neoznačen tip
+• l ili L za long, odnosno ll ili LL za long long
+❖ Unutar literala mogu da se nađu apostroﬁ ‘, koje prevodilac potpuno 
+ignoriše, a koji mogu da pomognu u čitanju (npr. razdvajanje hiljada)
+ 201
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Fundamentalni celobrojni tipovi
+❖ Tip celobrojnog literala je prvi tip koji može da prihvati datu vrednost, počev od tipa 
+int, ili od tipa long ako je dat suﬁks l ili L, odnosno od tipa long long ako je dat suﬁks ll ili 
+LL, i neoznačen ako je dat suﬁks u ili U
+❖ Na primer: 
+int d = 42; 
+int o = 052; 
+int x = 0x2a; 
+int X = 0X2A; 
+int b = 0b101010; 
+unsigned long long l1 = 18446744073709550592ull; 
+unsigned long long l2 = 18'446'744'073'709'550'592LLU;
+ 202

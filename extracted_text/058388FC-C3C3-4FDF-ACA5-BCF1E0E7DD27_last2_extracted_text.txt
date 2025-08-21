@@ -1,0 +1,40 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Klasa kao realizacija apstrakcije
+❖ Apstrakcija (abstraction) je misaoni (mentalni) postupak kojim se:
+• problem, pojava, sistem ili entitet od interesa posmatra pojednostavljeno, zanemarujući aspekte, 
+efekte i detalje koji nisu od značaja za dato rešenje, kako bi se ono što preostane učinilo dovoljno 
+pojednostavljenim da bi se moglo rešiti ili realizovati
+• zanemaruju različitosti pojedinačnih entiteta zarad isticanja njihovih zajedničkih osobina, kako bi se 
+ti entiteti posmatrali generalizovano (uopšteno), grupisani u određene kategorije po svojoj sličnosti, 
+opet zarad pojednostavljenja (posmatrati individualne entitete na isti način, umesto svaki posebno) 
+— klasiﬁkacija (classiﬁcation), generalizacija (generalization)
+• ovakvim pojednostavljenjem osmišljava pojam (koncept) koji poseduje istaknute zajedničke 
+osobine, a bez zanemarenih detalja
+❖ Apstrakcijom se naziva i rezultat ovog procesa, apstrahovani pojam, koncept osmišljen tim postupkom
+❖ Apstrakcija je, pored dekompozicije, osnovno oruđe koje čovek primenjuje u borbi protiv kompleksnosti 
+domena problema (problem domain) koji se rešava (softverom u našem interesu)
+❖ Apstrakcija je osnovni postupak u inženjerstvu, jer se inženjerske discipline bave pojednostavljenim 
+(apstrahovanim) modelima realnih pojava, sistema i entiteta, kako bi se mogli projektovati, ispitati i 
+konstruisati (npr. matematički modeli, numerički modeli, simulacioni modeli, makete itd.)
+ 80
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Klasa kao realizacija apstrakcije
+❖ Klasa može predstavljati realan (ﬁzički) koncept (apstrakciju) iz stvarnog sveta i domena problema, 
+ali i njeno uopštenje (generalizaciju /generalization/) ili specijalizaciju (specialization)
+❖ Na primer, pojam osobe u realnom svetu je veoma složen koncept, praktično nedokučiv: svaka 
+osoba u realnom svetu je individua za sebe i osobe se razlikuju po bezbroj svojstava, počev od 
+svog DNK, preko bioloških i antropoloških veličina, karaktera, prošlosti itd.
+❖ Međutim, za potrebe određenog softverskog sistema, uvodimo apstrakciju Osobe (Person) koja 
+predstavlja (drastično) pojednostavljenje ovog realnog koncepta - apstrakciju: 
+instance klase Person će imati samo svojstva od interesa za dati sistem koji se implementira (npr. 
+matični broj, ime i prezime, datum rođenja, pol)
+ 81
+Person
+personalID : PersonalID 
+firstName : Text 
+lastName : Text 
+dateOfBirth : Date 
+gender : Gender

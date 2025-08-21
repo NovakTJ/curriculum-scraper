@@ -1,0 +1,48 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Destruktor može biti i virtuelan; destruktor deklarisan kao virtuelan u osnovnoj klasi ostaje virtuelan i u 
+izvedenim klasama:
+struct Base { 
+  virtual ~Base (); 
+}; 
+❖ Tada je poziv destruktora polimorfan u situacijama kada se objektu pristupa posredno, preko pokazivača 
+ili reference na osnovnu klasu:
+Base* pb = new Derived; 
+delete pb; 
+❖ U ovakvoj situaciji, biće pozvan najpre destruktor izvedene klase, koji uvek implicitno poziva i 
+destruktore osnovnih klasa, pa u telu destrkutora nikada ne treba pisati eksplicitan poziv destruktora 
+osnovne kalse
+❖ Ukoliko destruktor ne bi bio virtuelan, u ovakvim situacijama ponašanje bi bilo nedeﬁnisano. Zbog toga se 
+preporučuje da destruktor klase uvek bude virtuelan, ako je klasa polimorfna (ako ima bar jednu virtuelnu 
+funkciju članicu), jer se njenim objektima pristupa polimorfno: računa se na to da se objektu pristupa kao 
+generalizovanom entitetu, bez znanja o konkretnom tipu tog objekta, što važi i za uništavanje
+❖ Destruktor može da se deklariše i kao čisto virtuelan (=0), na primer u osnovnoj klasi koja treba da bude 
+apstraktna, a nema drugu pogodnu funkciju članicu koja bi bila čisto virtuelna. Takvi destruktori ipak 
+moraju da imaju deﬁniciju, jer se destruktor osnovne klase uvek poziva kada se uništava objekat izvedene 
+klase
+Destruktor
+ 359
+Destruktor je virtuelan i u izvedenim klasama
+Pozvaće se destruktor izvedene klase
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Operator dodele kopiranjem (copy assignment operator) klase X je nestatička operatorska funkcija 
+članica te klase  sa imenom operator= čiji je jedini parametar tipa X, X&, const X&, volatile X& 
+ili const volatile X&
+❖ Ova funkcija poziva se kada se objekat klase X nalazi kao levi operand operatora dodele =, i 
+kada se baš ona odabere u postupku odabira preklopljene operatorske funkcije za desni 
+operand tog operatora:
+struct X { 
+  X& operator= (const X&); 
+  … 
+}; 
+X x1, x2 = x1, x3; 
+x3 = x2; 
+❖ Operacija dodele kopiranjem je potpuno drugačija operacija od inicijalizacije kopiranjem:
+• inicijalizacija kopiranjem se vrši na početku životnog veka objekta, i tada se poziva 
+konstruktor kopije; pre toga objekat koji se inicijalizuje ne postoji
+• dodela kopiranjem se vrši u izrazu, kao operacija dodele, i tada se poziva operator 
+dodele; pre toga objekat kome se dodeljuje već postoji i inicijalizovan je ranije
+Operator dodele kopiranjem
+ 360

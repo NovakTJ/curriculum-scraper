@@ -1,0 +1,35 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Klase i objekti
+❖ Klasa je
+• deo programa
+• deﬁnicija tipa (korisničkog)
+• obrazac za kreiranje objekata
+• speciﬁkacija svojstava i usluga svih svojih pripadnika (objekata)
+❖ Objekti
+• žive (nastaju i nestaju) u vreme izvršavanja programa
+• postoje u memoriji računara
+• imaju sva svojstva svoje klase
+• jesu nezavisni primerci svoje klase, svaki objekat ima svoje vrednosti podataka 
+članova
+ 19
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Klase i objekti
+void Clock::tick () { 
+  s++; 
+  if (s==60) s=0, m++; 
+  if (m==60) m=0, h++; 
+  if (h==24) h=0; 
+} 
+string Clock::getTime () { 
+  return to_string(h) + ":" + to_string(m) + ":" 
+         + to_string(s); 
+} 
+void Clock::setTime (int hh, int mm, int ss) { 
+  h = (hh>=0 && hh<=23) ? hh : 0; 
+  m = (mm>=0 && mm<=59) ? mm : 0; 
+  s = (ss>=0 && ss<=59) ? ss : 0; 
+}
+ 20

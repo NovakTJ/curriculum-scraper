@@ -1,0 +1,30 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Šta donosi OOP?
+OOP je deo objektne paradigme koja obuhvata osnovne objektne koncepte, od 
+kojih su neki:
+❖ apstraktni tipovi podataka (abstract data types): tip koji je deﬁnisao 
+programer, za koji se mogu kreirati primerci (instance) i koji je predstavljen 
+strukturom i ponašanjem, s tim da je za korisnike tipa bitno samo 
+ponašanje, ne i interna struktura (implementacija)
+❖ enkapsulacija (encapsulation): deo softvera ima jasno deﬁnisan interfejs i 
+implementaciju; interfejs je svima dostupan, implementacija je nedostupna
+❖ nasleđivanje (inheritance): jedan tip može da nasledi drugi, osnovni tip, sa 
+značenjem da su njegove instance jedna vrsta instanci tog osnovnog tipa
+❖ polimorﬁzam (polymorphism)
+ 13
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Šta se menja prelaskom na OOP?
+❖ Prelazak sa proceduralnog programiranja na OOP je promena 
+paradigme!
+❖ OO paradigma sadrži koncepte višeg nivoa apstrakcije, izražajnije, 
+bliže domenima problema
+❖ Menja se način razmišljanja
+❖ Težište se prebacuje sa implementacije na interfejse i veze između 
+delova softvera – cilj je oslabiti veze između delova i učiniti ih lakšim 
+za kontrolu i modiﬁkaciju
+❖ Umesto isključivo algoritamske dekompozicije koristi se objektna 
+dekompozicija
+ 14

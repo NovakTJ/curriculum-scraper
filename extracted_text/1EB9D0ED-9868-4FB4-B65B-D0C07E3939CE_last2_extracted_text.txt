@@ -1,0 +1,43 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Pokazivači na objekte
+• vezivanje pokazivača za automatski objekat koji prestaje da postoji po 
+povratku iz funkcije:
+int* f() { 
+  int x = 5; 
+  … 
+  return &x; 
+} 
+… 
+int* p = f(); 
+• Zaštita:
+• pažljivo programiranje
+• prevodioci mogu da upozore na pojave visećih pokazivača u nekim 
+situacijama, posebno kod povratka iz funkcije i vezivanja za automatske 
+objekte
+ 222
+x je automatski objekat
+x prestaje da postoji po izlasku iz funkcije
+p je sada viseći pokazivač
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Nizovi
+❖ Niz (array) je objekat koji predstavlja uređenu, ograničenu kolekciju objekata, složenih u 
+memoriju jedan iza drugog, deklarisane veličine
+❖ Elementi niza mogu biti bilo kog objektnog tipa: fundamentalnog tipa (osim tipa void), 
+pokazivačkog tipa, klasnog tipa, nabrajanja, ili niza (tako se pravi višedimenzionalni nizovi). 
+Ne postoje nizovi referenci ili funkcija
+❖ Elementi niza veličine N označeni su indeksima (pozicijama u nizu) počev od 0 zaključno sa 
+N-1 i može im se pristupati operatorom indeksiranja niza []:
+int a[100]; 
+… 
+a[0] = a[0] + a[99]; 
+❖ Elementi niza mogu biti drugi nizovi — tako se prave multidimenzionalni nizovi:
+int m[5][7]; 
+m[3][5] = 2; 
+❖ Za vreme izvršavanja, ne proverava se ispravnost indeksa za pristup nizu u smislu da li su u 
+opsegu dozvoljenih vrednosti (unutar granica niza); svaki prestup može da dovede do 
+nekorektnog ponašanja, kao sa pokazivačima
+ 223
+T T T T T T T T

@@ -1,0 +1,46 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Deklaracija uvodi jedno ili više imena u program. Deklaracija može i da se ponovi, 
+odnosno da ponovo uvede isto ime u program, pod uslovom da je identična 
+prethodnoj i da nije deﬁnicija
+❖ Deﬁnicija je ona deklaracija koja u potpunosti deﬁniše deklarisani entitet. Ne 
+mogu postojati dve deﬁnicije istog imena, čak i ako su identične. Deklaracija nije 
+deﬁnicija samo u nekim posebnim, navedenim slučajevima
+❖ Deklaracija varijable ili funkcije može da počne i speciﬁkatorom extern ili static koji 
+utiču na način vezivanja deklarisanog imena:
+• Speciﬁkator extern deklariše ime sa spoljašnjim (eksternim) vezivanjem; ovakve 
+deklaracije nisu deﬁnicije, osim ako imaju inicijalizator
+• Speciﬁkator static deklariše ime sa unutrašnjim (internim) vezivanjem
+extern const int a; 
+extern const int b = 1; 
+static const int c = 1;
+Deklaracija koja nije deﬁnicija, ime sa ekternim vezivanjem
+Deklaracije
+ 257
+Deﬁnicija imena sa eksternim vezivanjem
+Deﬁnicija imena sa internim vezivanjem
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Deklaracija funkcije koja ne navodi njeno telo nije deﬁnicija
+❖ Deklaracije formalnih parametara u deklaraciji funkcije koja nije deﬁnicija takođe nisu deﬁnicije. Na 
+takvim mestima nazivi formalnih parametara mogu da se izostave
+❖ Čak i kada se navodi samo deklaracija funkcije bez tela, poželjno je navesti nazive formalnih parametara 
+radi bolje čitljivosti, odnosno razumljivosti značenja tih parametara, osim ako to značenje nije očigledno; 
+na primer:
+void strcopy (char* to, const char* from); 
+ 
+int strcmp (const char*, const char*); 
+❖ Nakon deklaracije funkcije koja nije deﬁnicija, ta funkcija se može pozivati (pod uslovom da su  i da su 
+tipovi parametara i povratni tip deﬁnisani) i koristiti na svaki drugi način (npr. uzimati njena adresa), 
+pod uslovom da je negde u programu dato njeno telo. Ovakva deklaracija bez tela omogućava 
+međusobno rekurzivno pozivanje više funkcija:
+void f (); 
+void g () { 
+  …f()… 
+} 
+void f () { 
+  …g()… 
+}
+Deklaracije
+ 258

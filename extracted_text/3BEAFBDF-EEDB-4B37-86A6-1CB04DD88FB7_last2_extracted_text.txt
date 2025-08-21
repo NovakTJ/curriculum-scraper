@@ -1,0 +1,16 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Sadržaj
+❖ Uvod u OOP i C++
+❖ Apstrakcija i objektna dekompozicija
+❖ Detalji jezika C++
+ 2
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+Deo I: Uvod u OOP i C++
+ 3
+❖ O predmetu
+❖ Uvod u OOP
+❖ Pregled osnovnih koncepata OOP 
+na jeziku C++

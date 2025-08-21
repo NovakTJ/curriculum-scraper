@@ -1,0 +1,58 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Oblast važenja imena deklarisanog unutar deﬁnicije prostora imena počinje od tačke deklarisanja i prostire 
+se kroz sve deﬁnicije istog prostora imena iza te tačke, kao da su sve te deﬁnicije prostora imena spojene
+❖ Van te oblasti važenja, imenu iz oblasti važenja prostora imena pristupa se kvaliﬁkovano, preko operatora ::; 
+međutim, ime iz prostora imena može se uvesti u drugu oblast važenja i potom koristiti nekvaliﬁkovano, 
+deklaracijom using:
+#include <iostream> 
+#include <vector> 
+using std::cin; 
+using std::vector; 
+int main () { 
+  int n; 
+  cin>>n; 
+ 
+  vector<int> a(n); 
+  for (int i=0; i<n; i++) 
+    cin>>a[i]; 
+  … 
+} 
+❖ Ako je zametno navoditi sva potrebna imena, mogu se uvesti sva imena iz navedenog prostora imena 
+direktivom using namespace:
+#include <iostream> 
+#include <vector> 
+using namespace std;
+Prostori imena
+ 280
+Imena std::cin i std::vector su uključena u tekuću oblast važenja (tj. onu 
+u kojoj je deklaracija using) i mogu se koristiti nekvaliﬁkovano
+Sva deklarisana imena iz prostora imena std (a to su samo ona koja su 
+deklarisana deklaracijama iz uključenih zaglavlja) su uključena u 
+tekuću oblast važenja i mogu se u njoj koristiti nekvaliﬁkovano
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Prostori imena se mogu proizvoljno ugnežđivati; kvaliﬁkovani pristup imenu iz ugnežđene oblasti važenja vrši se 
+višestrukim nadovezivanjem operatora ::, npr. domain::core::users::User
+❖ U svakoj jedinici prevođenja podrazumeva se jedan implicitno deﬁnisan, bezimeni prostor imena, tzv. globalni opseg važenja 
+(global scope ili ﬁle scope); ime deklarisano van svih deﬁnicija funkcija, klasa ili prostora imena ima globalnu oblast važenja 
+ovog implicitnog prostora imena, počev od tačke deklarisanja, do kraja fajla u kom je ta deklaracija
+❖ U nekoj ugnežđenoj oblasti važenja u kojoj je globalno ime skriveno, tom imenu se može pristupiti kvaliﬁkacijom preko 
+unarnog operatora :: (bez levog operanda):
+int x = 0; 
+void f () { 
+  int x = 2; 
+  x = 3; 
+  ::x = 3; 
+} 
+int* p = &x; 
+❖ Može se deﬁnisati i bezimen prostor imena (unnamed namespace): opseg važenja imena deklarisanih u njemu uključuje i 
+okružujuću oblast važenja, ali takva imena imaju interno vezivanje; na ovaj način se mogu deklarisati globalna imena sa 
+internim vezivanjem (umesto stare upotrebe speciﬁkatora static), odnosno delovi implementacije nekog modula koji su 
+skriveni od drugih modula:
+namespace { 
+  … 
+}
+Prostori imena
+ 281

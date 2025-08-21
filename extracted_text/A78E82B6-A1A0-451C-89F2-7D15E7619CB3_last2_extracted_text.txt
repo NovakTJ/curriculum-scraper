@@ -1,0 +1,55 @@
+--- PAGE 1 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Slična potreba međusobnog unakrsnog referenciranja postoji i kod klasa: u deﬁniciji jedne može biti 
+potrebna druga i obratno, recimo, kada su objekti tih klasa obostrano povezani (klase su povezane 
+obostrano navigabilnom asocijacijom); tada se ova cirkularna zavisnost može razrešiti navođenjem 
+deklaracije - najave klase (forward declaration) koja nije deﬁnicija:
+class Lobby; 
+class Clock { 
+public: 
+  Clock (Lobby* owner); 
+  … 
+private: 
+  … 
+  Lobby* myLobby; 
+}; 
+class Lobby { 
+private: 
+  … 
+  Clock* myClock[MaxNumOfClocks]; 
+}; 
+❖ Nakon ovakve najave klase unapred, klasa se smatra nekompletnim tipom i ne mogu se deﬁnisati 
+objekti te klase, ali se mogu deﬁnisati pokazivači i reference na tu klasu; međutim, sa objektima na koje 
+upućuju ti pokazivači i reference se ne može raditi ništa, jer nisu poznati (deklarisani) članovi te klase
+Deklaracija - najava klase
+Deklaracije
+ 259
+Za deklarisanje pokazivača nije potrebna potpuna deﬁnicija klase, 
+dovoljna je najava
+
+--- PAGE 2 ---
+Septembar 2024. Copyright 2018-2024 by Dragan Milićev
+❖ Osim navedenog, ovakva tehnika koristi se i za smanjenje međusobnih zavisnosti 
+između fajlova-zaglavlja: ako za deﬁniciju jedne klase A nije potrebna potpuna 
+deﬁnicija druge klase B, onda u zaglavlje u kom je data puna deﬁnicija klase A ne 
+treba uključivati celo zaglavlje u kom je deﬁnicija klase B, jer će to značajno 
+produžiti prevođenje ako se prvo zaglavlje uključuje dalje (što je često slučaj), nego 
+treba postaviti samo deklaraciju - najavu:
+Deklaracije
+ 260
+class B; 
+class A { 
+public: 
+  A(B*); 
+  void doSomething(); 
+  … 
+private: 
+  B* myB; 
+  … 
+};
+#include “A.h” 
+#include “B.h”  
+A::A(B* aB) : myB(aB) {…} 
+void A::doSomething() { 
+  …myB->aFunction()… 
+}
