@@ -1,0 +1,8 @@
+Glava 4: Apstrakcija
+❖ Modularnost i enkapsulacija
+❖ Sa proceduralnog na OOP jezik
+❖ Klasa kao realizacija apstraktnog tipa podataka
+❖ Klasa kao realizacija apstraktne strukture podataka
+❖ Klasa kao realizacija apstrakcije
+❖ Klasa kao realizacija softverske mašine 
+41

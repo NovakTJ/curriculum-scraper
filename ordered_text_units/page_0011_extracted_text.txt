@@ -1,0 +1,5 @@
+Glava 2: Uvod u OOP
+❖ Zašto OOP?
+❖ Šta donosi OOP?
+❖ Šta se menja prelaskom na OOP? 
+11

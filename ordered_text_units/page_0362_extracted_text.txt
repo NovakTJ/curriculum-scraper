@@ -1,0 +1,10 @@
+Glava 13: Objekti sa zauzetim resursima
+❖ Objekti sa zauzetim resursima
+❖ Kopiranje objekata
+❖ Premeštanje resursa
+❖ Kategorije vrednosti
+❖ Reference na dvrednosti
+❖ Konstruktor premeštanja
+❖ Operator dodele premeštanjem
+❖ Semantika vrednosti u C++17 
+362

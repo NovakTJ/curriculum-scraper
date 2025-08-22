@@ -1,0 +1,5 @@
+Glava 15: Preklapanje operatora
+❖ Preklopljeni operatori
+❖ Preporučeni načini preklapanja operatora
+❖ Operatori new i delete 
+431

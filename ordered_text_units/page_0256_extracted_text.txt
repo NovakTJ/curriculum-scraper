@@ -1,0 +1,8 @@
+Glava 8: Deklaracije i opseg važenja
+❖ Deklaracije
+❖ Opseg važenja
+❖ Opseg važenja bloka
+❖ Opseg važenja klase
+❖ Prostori imena
+❖ Enumeracije sa opsegom važenja 
+256

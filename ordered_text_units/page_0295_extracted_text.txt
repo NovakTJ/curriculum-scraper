@@ -1,0 +1,7 @@
+Glava 10: Funkcije
+❖ Deklaracija i deﬁnicija funkcije
+❖ Inline funkcije
+❖ Podrazumevani argumenti
+❖ Preklapanje funkcija
+❖ Poziv funkcije 
+295
