@@ -7,6 +7,11 @@ import uuid
 from tqdm import tqdm
 import requests
 
+'''
+Not needed summarizing script, unused in the final pipeline
+'''
+
+
 class ClaudeSummarizer:
     def __init__(self, source_dir="ordered_text", output_dir="summarized_content", window_size=4, claude_api_key=None):
         self.source_dir = source_dir

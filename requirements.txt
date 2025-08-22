@@ -1,0 +1,5 @@
+pypdf
+PyPDF2
+tqdm
+beautifulsoup4
+requests
