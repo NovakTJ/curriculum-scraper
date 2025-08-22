@@ -1,0 +1,8 @@
+Glava 5: Objektna dekompoziija
+❖ Karakteristike lošeg i dobrog softvera
+❖ Raspodela odgovornosti
+❖ Algoritamska dekompozicija
+❖ Relacije i zavisnosti između klasa
+❖ Enkapsulacija 2
+❖ Hijerarhijska dekompozicija 
+94

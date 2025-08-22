@@ -1,0 +1,8 @@
+Glava 3: Pregled osnovnih koncepata OOP na jeziku C++
+❖ Klase i objekti
+❖ Enkapsulacija 1
+❖ Konstruktori i destruktori
+❖ Nasleđivanje
+❖ Polimorﬁzam
+❖ Uvod u jezik C++ 
+15
