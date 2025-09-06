@@ -1,9 +1,8 @@
-# extract_last_two_pages.py
 import os
 from pypdf import PdfReader, PdfWriter
 for i in range(5):
-    IN_DIR = f"downloaded_pdfs_OS1_{i}"
-    OUT_DIR = f"last_two_pages__OS1_{i}"
+    IN_DIR = f"/workspaces/curriculum-scraper/ordered_text_OS1_{i}/ordered_pdfs"
+    OUT_DIR = f"first_page_OS1_{i}"
     os.makedirs(OUT_DIR, exist_ok=True)
 
     for name in os.listdir(IN_DIR):
@@ -16,15 +15,13 @@ for i in range(5):
             if n == 0:
                 print("empty?", inpath)
                 continue
-            # pick last two pages (if only 1 page exists, just copy it)
-            start = max(0, n-2)
+            # extract only the first page
             writer = PdfWriter()
-            for i in range(start, n):
-                writer.add_page(reader.pages[i])
-            outname = os.path.splitext(name)[0] + "_last2.pdf"
+            writer.add_page(reader.pages[0])
+            outname = os.path.splitext(name)[0] + ".pdf"
             outpath = os.path.join(OUT_DIR, outname)
             with open(outpath, "wb") as f:
                 writer.write(f)
-            print("Wrote", outpath, "(", n, "->", n-start, "pages )")
+            print("Wrote", outpath, "(1 page)")
         except Exception as e:
             print("ERROR processing", inpath, e)

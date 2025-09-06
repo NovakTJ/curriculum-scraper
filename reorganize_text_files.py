@@ -179,34 +179,35 @@ def reorganize_pdf_files(input_dir, pdf_dir, output_dir, page_to_file):
 
 def main():
     # Define input and output directories
-    input_dir = "/workspaces/curriculum-scraper/extracted_text"
-    pdf_dir = "/workspaces/curriculum-scraper/last_two_pages"
-    output_dir = "/workspaces/curriculum-scraper/ordered_text"
-    
-    print("PDF Text File Reorganizer")
-    print("=" * 30)
-    print(f"Input directory: {input_dir}")
-    print(f"PDF directory: {pdf_dir}")
-    print(f"Output directory: {output_dir}")
-    print()
-    
-    # Check if input directories exist
-    if not Path(input_dir).exists():
-        print(f"Error: Input directory '{input_dir}' does not exist!")
-        return
-    
-    if not Path(pdf_dir).exists():
-        print(f"Error: PDF directory '{pdf_dir}' does not exist!")
-        return
-    
-    # Reorganize text files first
-    page_to_file = reorganize_text_files(input_dir, output_dir)
-    
-    # Only proceed with PDF reorganization if we have successful text file mappings
-    if page_to_file:
-        reorganize_pdf_files(input_dir, pdf_dir, output_dir, page_to_file)
-    else:
-        print("\nSkipping PDF reorganization - no valid page mappings found.")
+    for i in range(5):
+        input_dir = f"/workspaces/curriculum-scraper/extracted_text_OS1_{i}"
+        pdf_dir = f"/workspaces/curriculum-scraper/last_two_pages__OS1_{i}"
+        output_dir = f"/workspaces/curriculum-scraper/ordered_text_OS1_{i}"
+
+        print("PDF Text File Reorganizer")
+        print("=" * 30)
+        print(f"Input directory: {input_dir}")
+        print(f"PDF directory: {pdf_dir}")
+        print(f"Output directory: {output_dir}")
+        print()
+        
+        # Check if input directories exist
+        if not Path(input_dir).exists():
+            print(f"Error: Input directory '{input_dir}' does not exist!")
+            return
+        
+        if not Path(pdf_dir).exists():
+            print(f"Error: PDF directory '{pdf_dir}' does not exist!")
+            return
+        
+        # Reorganize text files first
+        page_to_file = reorganize_text_files(input_dir, output_dir)
+        
+        # Only proceed with PDF reorganization if we have successful text file mappings
+        if page_to_file:
+            reorganize_pdf_files(input_dir, pdf_dir, output_dir, page_to_file)
+        else:
+            print("\nSkipping PDF reorganization - no valid page mappings found.")
 
 if __name__ == "__main__":
     main()

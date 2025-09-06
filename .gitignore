@@ -1,0 +1,47 @@
+# .gitignore for curriculum-scraper
+# Ignore extracted, intermediate, and generated data
+
+data/
+downloaded_pdfs_OS1_0/
+downloaded_pdfs_OS1_1/
+downloaded_pdfs_OS1_2/
+downloaded_pdfs_OS1_3/
+downloaded_pdfs_OS1_4/
+extracted_text_OS1_0/
+extracted_text_OS1_1/
+extracted_text_OS1_2/
+extracted_text_OS1_3/
+extracted_text_OS1_4/
+first_page/
+first_page_OS1_0/
+first_page_OS1_1/
+first_page_OS1_2/
+first_page_OS1_3/
+first_page_OS1_4/
+intermediate_files/
+last_two_pages__OS1_0/
+last_two_pages__OS1_1/
+last_two_pages__OS1_2/
+last_two_pages__OS1_3/
+last_two_pages__OS1_4/
+ordered_pdfs/
+ordered_text_OS1_0/
+ordered_text_OS1_1/
+ordered_text_OS1_2/
+ordered_text_OS1_3/
+ordered_text_OS1_4/
+ordered_unit_files/
+other_files/
+
+# Ignore PDFs and generated files
+*.pyc
+__pycache__/
+
+# Ignore shell script outputs
+*.pdf
+*.sh~
+
+# Ignore OS and editor files
+.DS_Store
+*.swp
+*.swo

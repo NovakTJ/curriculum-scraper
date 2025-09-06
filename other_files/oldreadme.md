@@ -1,4 +1,4 @@
-# oo1-extractor
+# curriculum-scraper
 
 We build because we can - a data scraper used to prepare data for a validation agent.
 
@@ -14,7 +14,7 @@ The task has been done using a lot of python scripts, instead of a Jupyter noteb
 
 1. scra.py - to scrape raw PDFs. The website and the PDF formats are weird.
 2. twopages.py - to get the usable parts of the PDFs
-3. extract_pdf-text.py
+3. extract_pdf_text.py
 4. reorganize_text-files.py - to sort the text files and the PDF files based on their page numbers
 5. onepage.sh - to have one page in each text file.
 
