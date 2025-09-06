@@ -1,4 +1,4 @@
-# oo1-extractor
+# curriculum-scraper
 
 Data scraper and processor to prepare PDF content from a website for a validation LLM agent.
 

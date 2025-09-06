@@ -84,7 +84,7 @@ def ensure_tools_available():
             sys.exit(127)
 
 def main():
-    parser = argparse.ArgumentParser(description="Run the oo1-extractor pipeline.")
+    parser = argparse.ArgumentParser(description="Run the curriculum-scraper pipeline.")
     parser.add_argument("--list", action="store_true", help="List available steps and exit")
     parser.add_argument("--only", help="Comma-separated step ids to run (overrides start/end)")
     parser.add_argument("--start", help="Start from step id (inclusive)")
@@ -106,7 +106,7 @@ def main():
     if not os.path.exists("README.md"):
         eprint("Warning: README.md not found in current directory. Are you running from the repo root?")
 
-    print("oo1-extractor pipeline starting")
+    print("curriculum-scraper pipeline starting")
     print("Selected steps:")
     for s in selected:
         print(f"- {s.id}: {s.title}")

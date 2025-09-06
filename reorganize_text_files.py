@@ -179,9 +179,9 @@ def reorganize_pdf_files(input_dir, pdf_dir, output_dir, page_to_file):
 
 def main():
     # Define input and output directories
-    input_dir = "/workspaces/oo1-extractor/extracted_text"
-    pdf_dir = "/workspaces/oo1-extractor/last_two_pages"
-    output_dir = "/workspaces/oo1-extractor/ordered_text"
+    input_dir = "/workspaces/curriculum-scraper/extracted_text"
+    pdf_dir = "/workspaces/curriculum-scraper/last_two_pages"
+    output_dir = "/workspaces/curriculum-scraper/ordered_text"
     
     print("PDF Text File Reorganizer")
     print("=" * 30)
