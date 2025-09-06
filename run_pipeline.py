@@ -17,7 +17,7 @@ class Step:
 STEPS: List[Step] = [
     Step("scra", "Scrape PDFs", ["python3", "scra.py"], "scra.py"),
     Step("twopages", "Keep only the usable pages", ["python3", "twopages.py"], "twopages.py"),
-    Step("extract_pdf_text", "Extract text from PDFs", ["python3", "extract_pdf-text.py"], "extract_pdf-text.py"),
+    Step("extract_pdf_text", "Extract text from PDFs", ["python3", "extract_pdf_text.py"], "extract_pdf_text.py"),
     Step("reorganize_text_files", "Reorganize text and PDFs by page number", ["python3", "reorganize_text-files.py"], "reorganize_text-files.py"),
     Step("onepage", "Ensure one page per text file", ["bash", "onepage.sh"], "onepage.sh"),
     Step("extract_units", "Extract units", ["python3", "extract_units.py"], "extract_units.py"),

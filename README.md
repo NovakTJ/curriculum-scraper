@@ -51,7 +51,7 @@ python3 twopages.py
 
 3) Extract text from PDFs
 ```bash
-python3 extract_pdf-text.py
+python3 extract_pdf_text.py
 ```
 
 4) Reorganize text and PDFs by page number
